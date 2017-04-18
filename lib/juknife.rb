@@ -1,5 +1,7 @@
-require "juknife/version"
+require 'juknife/version'
 
+# The module that contains everything Juknife-related.
 module Juknife
-  # Your code goes here...
+  autoload :DSL, './juknife/dsl'
+  autoload :Context, './juknife/context'
 end
