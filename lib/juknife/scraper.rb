@@ -3,7 +3,6 @@ module Juknife
   # to execute scraping.
   class Scraper
     def execute(url)
-      
     end
   end
 end

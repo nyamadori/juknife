@@ -6,9 +6,9 @@ A scraping DSL library for Ruby.
 class HogeKnife < Juknife::Knife
   items :offices, '//table[@class=""]//tr' do |item|
     item :field1, 'td[1]'
-  	item :field2, 'td[2]' do |str|
-  		str.split(', ')
-  	end
+    item :field2, 'td[2]' do |str|
+      str.split(', ')
+    end
   end
 end
 
