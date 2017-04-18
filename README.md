@@ -1,8 +1,10 @@
 # Juknife
 
+[![Build Status](https://travis-ci.org/nyamadori/juknife.svg?branch=master)](https://travis-ci.org/nyamadori/juknife)
+
 A scraping DSL library for Ruby.
 
-``` ruby
+```ruby
 class HogeKnife < Juknife::Knife
   items :offices, '//table[@class=""]//tr' do |item|
     item :field1, 'td[1]'
