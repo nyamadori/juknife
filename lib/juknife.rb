@@ -4,4 +4,5 @@ require 'juknife/version'
 module Juknife
   autoload :DSL, './juknife/dsl'
   autoload :Context, './juknife/context'
+  autoload :Knife, './juknife/knife'
 end
