@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Juknife
   # The DSL (Domain Specific Language) to scrape from web pages and
   # to populate the scraping results into a Hash object.
@@ -10,7 +12,7 @@ module Juknife
     #               populating
     def item(name, xpath, &block)
       node = current_node.at_xpath(xpath)
-      write_item(name, node.text, block)
+      write_item(name, node, &block)
     end
 
     # Define a scraping target in the page that has multiple content.
@@ -34,17 +36,17 @@ module Juknife
 
     private
 
-    def write_item(name, text, &block)
-      text = normalize_text(node)
-      result[name] = block ? yield(text) : text
+    def write_item(name, node, &block)
+      value = node ? normalize_text(node.text) : nil
+      result[name] = block ? yield(node) : value
     end
 
     def write_items(name, items)
-      result[name] = items.reject { |item| item.all?(:empty?) }
+      result[name] = items.reject { |item| item.all?(&:empty?) }
     end
 
-    def normalize_text(node)
-      node.text.strip
+    def normalize_text(text)
+      text.strip.gsub(/(\s)(\s)*/, '\1')
     end
   end
 end

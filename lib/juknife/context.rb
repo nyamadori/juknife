@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Juknife
-  # A context to keep running states of scraping on the DSL.
+  # A context to keep running states of scraping in the DSL.
   class Context
     include DSL
 
