@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'juknife/version'
 
 # The module that contains everything Juknife-related.
