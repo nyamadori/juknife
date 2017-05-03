@@ -7,22 +7,22 @@ module Juknife
     # Define a scraping target in the page that has single content.
     #
     # @param name [String]  name to populate into some destinations
-    # @param xpath [String] xpath to search an element
+    # @param selector [String] CSS selector to search an element
     # @yield [text] give a text of found element to process the text before
     #               populating
-    def item(name, xpath, &block)
-      node = current_node.at_xpath(xpath)
+    def item(name, selector, &block)
+      node = current_node.at_css(selector)
       write_item(name, node, &block)
     end
 
     # Define a scraping target in the page that has multiple content.
     #
     # @param name [String]  name to populate into some destinations
-    # @param xpath [String] xpath to search an element
+    # @param selector [String] CSS selector to search an element
     # @yield [text] give a text of found element to process the text before
     #               populating
-    def items(name, xpath, &block)
-      nodes = current_node.xpath(xpath)
+    def items(name, selector, &block)
+      nodes = current_node.css(selector)
       result_items = []
 
       nodes.each do |node|
