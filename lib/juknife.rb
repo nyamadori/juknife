@@ -4,7 +4,7 @@ require 'juknife/version'
 
 # The module that contains everything Juknife-related.
 module Juknife
-  autoload :DSL, './lib/juknife/dsl'
-  autoload :Context, './lib/juknife/context'
-  autoload :Knife, './lib/juknife/knife'
+  autoload :Request, 'juknife/request'
+  autoload :Scraper, 'juknife/scraper'
+  autoload :Scraping, 'juknife/scraping'
 end
