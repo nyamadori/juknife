@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'active_support'
+require 'active_support/core_ext/object'
+
 module Juknife
   module Scraping
     module DSL
@@ -19,13 +22,20 @@ module Juknife
         end
 
         def visit(context)
-          children_result = {}
+          result = []
 
-          children.each do |child|
-            child.visit(Context.new(selector, children_result))
+          context.find_all(selector).each do |ele_chlid|
+            child_context = Context.new(ele_chlid, {})
+
+            children.each do |child|
+              child.visit(child_context)
+            end
+
+            result << child_context.result
           end
 
-          context.result[name] = children_result
+          context.result[name] =
+            result.reject { |hash| hash.values.compact.all?(&:empty?) }
         end
       end
     end

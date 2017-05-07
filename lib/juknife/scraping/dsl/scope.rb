@@ -17,8 +17,10 @@ module Juknife
         end
 
         def visit(context)
+          scope = context.find(selector)
+
           children.each do |child|
-            child.visit(Context.new(selector, context.result))
+            child.visit(Context.new(scope, context.result))
           end
         end
       end

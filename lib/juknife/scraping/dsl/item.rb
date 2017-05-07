@@ -19,7 +19,7 @@ module Juknife
         end
 
         def visit(context)
-          context.result[name] = 'hoge'
+          context.result[name] = context.text(selector)
         end
       end
     end
