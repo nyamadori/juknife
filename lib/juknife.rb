@@ -1,5 +1,10 @@
-require "juknife/version"
+# frozen_string_literal: true
 
+require 'juknife/version'
+
+# The module that contains everything Juknife-related.
 module Juknife
-  # Your code goes here...
+  autoload :Request, 'juknife/request'
+  autoload :Scraper, 'juknife/scraper'
+  autoload :Scraping, 'juknife/scraping'
 end

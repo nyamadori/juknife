@@ -1,3 +1,9 @@
+AllCops:
+  TargetRubyVersion: 2.4
+
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%': '{}'
+
+Metrics/BlockLength:
+  Enabled: false

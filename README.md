@@ -1,8 +1,47 @@
 # Juknife
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/juknife`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Build Status](https://travis-ci.org/nyamadori/juknife.svg?branch=master)](https://travis-ci.org/nyamadori/juknife)
 
-TODO: Delete this and the text above, and describe your gem
+A Ruby library for Web scraping. It allows to describe scraping nodes and text structurally and declaratively.
+
+For example, scraping on Google search can be written as follows:
+
+```ruby
+class GoogleSearchScraper < Juknife::Scraper
+  request do
+    get 'https://www.google.co.jp/search'
+    user_agent 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)'
+    query do
+      {
+        q: params[:query]
+      }
+    end
+  end
+
+  scraping do
+    items :results, '#ires .g' do
+      item :title, 'h3'
+      item :url, '.kv > cite'
+      item :description, '.st'
+    end
+  end
+end
+
+scraper = GoogleSearchScraper.new
+scraper.scrape(query: 'test')
+# =>
+# {:results=>
+#   [
+#     {:title=>"testの意味・用例｜英辞郎 on the WEB：アルク",
+#      :url=>"https://eow.alc.co.jp/search?q=test",
+#      :description=>
+#       "test 【1自動】 試験［検査］を受ける 《医・化学》検査［分析］を行う 〔試験で... - アルクがお\n" +
+#       "届けする進化するオンライン英和・和英辞書データベース。一般的な単語や連語から、\n" +
+#       "イディオム、専門用語、スラングまで幅広く収録。"}
+#     }
+#   ]
+# }
+```
 
 ## Installation
 
@@ -22,7 +61,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+[TODO]
 
 ## Development
 
@@ -33,4 +72,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/juknife. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
