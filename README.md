@@ -5,18 +5,40 @@
 A scraping DSL library for Ruby.
 
 ```ruby
-class HogeKnife < Juknife::Knife
-  items :offices, '//table[@class=""]//tr' do |item|
-    item :field1, 'td[1]'
-    item :field2, 'td[2]' do |str|
-      str.split(', ')
+class GoogleSearchScraper < Juknife::Scraper
+  request do
+    get 'https://www.google.co.jp/search'
+    user_agent 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)'
+    query do
+      {
+        q: params[:query]
+      }
+    end
+  end
+
+  scraping do
+    items :results, '#ires .g' do
+      item :title, 'h3'
+      item :url, '.kv > cite'
+      item :description, '.st'
     end
   end
 end
 
-knife = HogeKnife.new(url)
-knife.scrape('http://example.com/')
-  # => { offices: [{ field1: 'value', field2: ['value1', 'value2' }, ...] }
+scraper = GoogleSearchScraper.new
+scraper.scrape(query: 'test')
+# =>
+# {:results=>
+#   [
+#     {:title=>"testの意味・用例｜英辞郎 on the WEB：アルク",
+#      :url=>"https://eow.alc.co.jp/search?q=test",
+#      :description=>
+#       "test 【1自動】 試験［検査］を受ける 《医・化学》検査［分析］を行う 〔試験で... - アルクがお\n" +
+#       "届けする進化するオンライン英和・和英辞書データベース。一般的な単語や連語から、\n" +
+#       "イディオム、専門用語、スラングまで幅広く収録。"}
+#     }
+#   ]
+# }
 ```
 
 ## Installation
