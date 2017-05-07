@@ -29,7 +29,8 @@ module Juknife
       end
 
       def connection
-        @connection ||= Faraday.new(url: url_builder.call)
+        @connection ||=
+          Faraday.new(url_builder.call, params: query_builder.call)
       end
 
       def rack_builder
@@ -38,7 +39,8 @@ module Juknife
 
       def request
         @request ||= connection.build_request(http_method) do |req|
-          req.body = body_builder.call
+          req.headers['User-Agent'] = user_agent_builder&.call
+          req.body = body_builder&.call
         end
       end
     end
