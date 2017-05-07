@@ -11,8 +11,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ['nyamadori']
   spec.email         = ['nyamadorig@gmail.com']
 
-  spec.summary       = 'A scraping library for Ruby and Ruby on Rails'
-  spec.description   = 'A scraping library for Ruby and Ruby on Rails'
+  spec.summary       = 'A Ruby library for Web scraping.'
+  spec.description   = <<~DESC
+    A Ruby library for Web scraping. It allows to describe scraping nodes and
+    text structurally and declaratively.
+  DESC
   spec.homepage      = 'https://github.com/nyamadori/juknife'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
