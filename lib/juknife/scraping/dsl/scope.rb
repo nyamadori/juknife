@@ -3,6 +3,7 @@
 module Juknife
   module Scraping
     module DSL
+      # A DSL node in the tree that makes an scope of element.
       class Scope
         include DSL
 

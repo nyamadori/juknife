@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Juknife
+  # Juknife::Scraper is a scraper to request a web page and to extract data.
   class Scraper
     def initialize
       @scraping = Scraping::Runner.new(&self.class.scraping_block)

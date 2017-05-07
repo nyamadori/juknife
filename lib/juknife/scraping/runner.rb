@@ -4,6 +4,7 @@ require 'nokogiri'
 
 module Juknife
   module Scraping
+    # Juknife::Scraping::Runner object is a runner for scraping DSL.
     class Runner
       include DSL
       attr_reader :source, :block, :params

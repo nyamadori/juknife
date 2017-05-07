@@ -3,6 +3,7 @@
 module Juknife
   module Scraping
     module DSL
+      # A DSL node in the tree that scrapes an element.
       class Item
         include DSL
 

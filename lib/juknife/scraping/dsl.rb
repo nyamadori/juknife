@@ -6,6 +6,7 @@ require_relative 'dsl/scope'
 
 module Juknife
   module Scraping
+    # A DSL for definition scraping items on the web page.
     module DSL
       autoload :Item, 'juknife/scraping/dsl/item'
       autoload :Items, 'juknife/scraping/dsl/items'

@@ -2,6 +2,7 @@
 
 module Juknife
   module Scraping
+    # A context object keeps a state of scraping.
     class Context
       attr_reader :node, :result
 

@@ -4,6 +4,7 @@ require 'faraday'
 
 module Juknife
   module Request
+    # Juknife::Request::Runner object is a runner for request DSL.
     class Runner
       include DSL
       attr_reader :block, :params

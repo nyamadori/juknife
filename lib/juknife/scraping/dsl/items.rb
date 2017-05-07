@@ -6,6 +6,7 @@ require 'active_support/core_ext/object'
 module Juknife
   module Scraping
     module DSL
+      # A DSL node in the tree that scrapes elements.
       class Items
         include DSL
 
@@ -21,7 +22,7 @@ module Juknife
           instance_eval(&block)
         end
 
-        def visit(context)
+        def visit(context) # rubocop:disable Metrics/AbcSize
           result = []
 
           context.find_all(selector).each do |ele_chlid|

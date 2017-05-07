@@ -2,6 +2,7 @@
 
 module Juknife
   module Request
+    # A DSL for definition target web page and request methods.
     module DSL
       HTTP_METHODS = %i[get post put delete head patch options].freeze
 
