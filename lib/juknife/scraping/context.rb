@@ -20,7 +20,7 @@ module Juknife
       end
 
       def text(selector)
-        find(selector)&.text&.strip
+        find(selector)&.text&.strip&.gsub(/(\s)(\s*)/, '\1')
       end
     end
   end
