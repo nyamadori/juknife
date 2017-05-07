@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/nyamadori/juknife.svg?branch=master)](https://travis-ci.org/nyamadori/juknife)
 
-A scraping DSL library for Ruby.
+A Ruby library for Web scraping. It allows to describe scraping nodes and text structurally and declaratively.
+
+For example, scraping on Google search can be written as follows:
 
 ```ruby
 class GoogleSearchScraper < Juknife::Scraper
@@ -59,7 +61,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+[TODO]
 
 ## Development
 
