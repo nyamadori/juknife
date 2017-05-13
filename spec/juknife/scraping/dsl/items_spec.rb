@@ -4,7 +4,6 @@ require 'spec_helper'
 require 'nokogiri'
 
 RSpec.describe Juknife::Scraping::DSL::Items do
-  let(:owner) { nil }
   let(:html_source) { File.read('./spec/fixtures/test.html') }
   let(:document) { Nokogiri.parse(html_source) }
   let(:ctx) { Juknife::Scraping::Context.new(document, {}) }
@@ -28,7 +27,7 @@ RSpec.describe Juknife::Scraping::DSL::Items do
   describe '#visit' do
     let(:selector) { '#profile-nyamadori .table > tr' }
 
-    it 'finds an element' do
+    it 'populates content of elements specified by the selector into results' do
       expect(ctx.result[item_name]).to match [
         { key: 'height', value: '165cm' },
         { key: 'weight', value: '48kg' },

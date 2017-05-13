@@ -18,7 +18,10 @@ RSpec.describe Juknife::Scraping::DSL::Item do
     context 'finds an element' do
       let(:name) { :user_id }
       let(:selector) { '#profile-nyamadori > h1.header' }
-      it { expect(ctx.result[:user_id]).to eq('nyamadori') }
+
+      it 'populates content of an element into the result' do
+        expect(ctx.result[:user_id]).to eq('nyamadori')
+      end
     end
 
     context 'finds an element that have multiline text' do
