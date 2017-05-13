@@ -2,3 +2,18 @@ engines:
   rubocop:
     enabled: true
     channel: rubocop-0-48
+  duplication:
+    enabled: true
+  fixme:
+    enabled: true
+  bundler-audit:
+    enabled: true
+
+ratings:
+  paths:
+    - Gemfile.lock
+    - "**.rb"
+
+exclude_paths:
+  - spec/
+  - vendor/
