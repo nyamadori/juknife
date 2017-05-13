@@ -10,7 +10,7 @@ module Juknife
       attr_reader :query_builder
 
       HTTP_METHODS.each do |method|
-        define_method(method) do |url, &block|
+        define_method(method) do |url = nil, &block|
           @http_method = method
           @url_builder = block || proc { url }
         end
