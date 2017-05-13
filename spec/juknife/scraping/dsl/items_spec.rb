@@ -38,7 +38,7 @@ RSpec.describe Juknife::Scraping::DSL::Items do
     context 'when an element specified by the selector does not exist' do
       let(:selector) { '#profile-nyamadori .table-does-not-exist > tr' }
 
-      it 'populates nil into the result' do
+      it 'populates [] into the result' do
         expect(ctx.result[item_name]).to eq([])
       end
     end
