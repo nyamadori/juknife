@@ -4,6 +4,9 @@ engines:
     channel: rubocop-0-48
   duplication:
     enabled: true
+    config:
+      languages:
+        - ruby
   fixme:
     enabled: true
   bundler-audit:
