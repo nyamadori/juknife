@@ -14,14 +14,17 @@ RSpec.describe Juknife::Scraping::DSL::Item do
     item.visit(ctx)
   end
 
-  describe '#item' do
-    context 'find an element' do
+  describe '#visit' do
+    context 'finds an element' do
       let(:name) { :user_id }
       let(:selector) { '#profile-nyamadori > h1.header' }
-      it { expect(ctx.result[:user_id]).to eq('nyamadori') }
+
+      it 'populates content of an element into the result' do
+        expect(ctx.result[:user_id]).to eq('nyamadori')
+      end
     end
 
-    context 'find an element that have multiline text' do
+    context 'finds an element that have multiline text' do
       let(:name) { :comment }
       let(:selector) { '#profile-nyamadori > p.comment' }
 
@@ -42,21 +45,4 @@ RSpec.describe Juknife::Scraping::DSL::Item do
       end
     end
   end
-  #
-  # describe '#items' do
-  #   it 'populates an array of hash into the result' do
-  #     ctx.items :data_sheet, '#profile-nyamadori tr' do |ds|
-  #       ds.item :key, 'th'
-  #       ds.item :value, 'td'
-  #     end
-  #
-  #     expect(ctx.result[:data_sheet]).to match_array(
-  #       [
-  #         { key: 'height', value: '165cm' },
-  #         { key: 'weight', value: '48kg' },
-  #         { key: 'birthday', value: '1993.02.14' }
-  #       ]
-  #     )
-  #   end
-  # end
 end
