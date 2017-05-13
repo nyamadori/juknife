@@ -9,8 +9,6 @@ engines:
         - ruby
   fixme:
     enabled: true
-  bundler-audit:
-    enabled: true
 
 ratings:
   paths:
