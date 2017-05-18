@@ -3,7 +3,9 @@
 module Juknife
   # :nodoc:
   module Request
-    autoload :DSL, 'juknife/request/dsl'
-    autoload :Runner, 'juknife/request/runner'
+    extend ActiveSupport::Autoload
+
+    autoload :DSL
+    autoload :Runner
   end
 end

@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 require 'juknife/version'
+require 'active_support/dependencies/autoload'
 
 # The module that contains everything Juknife-related.
 module Juknife
-  autoload :Request, 'juknife/request'
-  autoload :Scraper, 'juknife/scraper'
-  autoload :Scraping, 'juknife/scraping'
+  extend ActiveSupport::Autoload
+
+  autoload :Agent
+  autoload :Error
+  autoload :Middleware
+  autoload :Request
+  autoload :Scraping
 end

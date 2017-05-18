@@ -3,8 +3,10 @@
 module Juknife
   # :nodoc:
   module Scraping
-    autoload :DSL, 'juknife/scraping/dsl'
-    autoload :Context, 'juknife/scraping/context'
-    autoload :Runner, 'juknife/scraping/runner'
+    extend ActiveSupport::Autoload
+
+    autoload :DSL
+    autoload :Context
+    autoload :Runner
   end
 end
