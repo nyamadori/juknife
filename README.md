@@ -7,7 +7,7 @@ A Ruby library for Web scraping. It allows to describe scraping nodes and text s
 For example, scraping on Google search can be written as follows:
 
 ```ruby
-class GoogleSearchScraper < Juknife::Scraper
+class GoogleSearchAgent < Juknife::Agent
   request do
     get 'https://www.google.co.jp/search'
     user_agent 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)'
@@ -27,8 +27,8 @@ class GoogleSearchScraper < Juknife::Scraper
   end
 end
 
-scraper = GoogleSearchScraper.new
-scraper.scrape(query: 'test')
+agent = GoogleSearchAgent.new
+agent.scrape(query: 'test')
 # =>
 # {:results=>
 #   [
